@@ -1,27 +1,46 @@
 ---
 title: "Student Performances in Portuguese High school"
-subtitle: "Replace with one sentence that tells readers why the question matters"
+subtitle: "Student's grades often act as a filter for further opportunity, whether it be 
+further schooling, scholarships, or job opportunities. By understanding what best predicts 
+academic success teachers, parents, and students can best set themselves up for success both during 
+their education and afterward."
 author: "Athena Nikopoulos, April Baik, Emilia Tolley"
 date: last-modified
-description: "Replace with a brief description for link previews."
+description: "A student project website, built with GitHub pages, which examines the link between different 
+predictors variables and student's final grades in two Portuguese schools."
 ---
 
 **Narrative word count:** Replace with a number from 750 to 1,000.
 
 ::: {.callout-tip}
-This template suggests one way to tell the story. You may rename, combine, or reorder headings and add, remove, or move code chunks. Use plots, tables, selected model output, and prose in whatever combination best communicates your evidence. Keep every required part easy to find, use no more than four primary figures or tables, and delete this note and all bold prompts before submitting.
+This template suggests one way to tell the story. You may rename, combine, or reorder 
+headings and add, remove, or move code chunks. Use plots, tables, selected model output, 
+and prose in whatever combination best communicates your evidence. Keep every required 
+part easy to find, use no more than four primary figures or tables, and delete this note 
+and all bold prompts before submitting.
 :::
 
 ## The question
 
-**In one or two short paragraphs, introduce the setting, audience, focused research question, data source, observational unit, response, important predictors, and one important data limitation. Lead with what makes the question worth answering.**
+**In one or two short paragraphs, introduce the setting, audience, 
+focused research question, data source, observational unit, response, 
+important predictors, and one important data limitation. Lead with what makes the question worth answering.**
 
 ## What the baseline shows
 
-**Describe and justify a simple course-based baseline regression model. Interpret the result that best establishes the rest of the story, including its direction, magnitude, scale, and uncertainty. Explain one limitation or unresolved pattern that motivates deeper analysis.**
+**Describe and justify a simple course-based baseline regression model. 
+Interpret the result that best establishes the rest of the story, including its direction, 
+magnitude, scale, and uncertainty. Explain one limitation or unresolved pattern that 
+motivates deeper analysis.**
 
 ```{r}
 # Load packages and data, document preparation, and fit the baseline.
+
+# Load packages and read the data with a relative path or reproducible step.
+# Show only a compact check of dimensions and variables.
+# library(tidyverse)
+# data <- read_csv2("student-mat.csv")
+# head(data)
 ```
 
 ```{r}
