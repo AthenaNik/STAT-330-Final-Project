@@ -10,7 +10,15 @@ This page is a work log, not a second report. Short bullets are welcome. It is s
 
 **AI system and date:** Replace.
 
+Proposed AI Extension: We want to use AI to make a small application that will interpret the effect of predictors on the response variable. The app will have options to change the different predictors in the model and see how that affects the response variable (the student's final grade). 
+
 **Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.**
+
+- Question: 
+- Variables: 
+- Course-based core model: 
+- Baseline result:
+- Limitation or opportunity: 
 
 ## Substantive prompts
 
@@ -32,6 +40,9 @@ Paste the exact prompts that shaped the extension. Include the customized extens
 
 1. **Check and result:** Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.
 2. **Check and result:** Replace with a different check and what you learned.
+
+1. **Check and result:** 
+2. **Check and result:** 
 
 Link or cite verification sources where appropriate. A second AI response does not count as independent verification.
 
