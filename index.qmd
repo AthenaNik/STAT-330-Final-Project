@@ -24,7 +24,21 @@ and all bold prompts before submitting.
 
 **In one or two short paragraphs, introduce the setting, audience, 
 focused research question, data source, observational unit, response, 
-important predictors, and one important data limitation. Lead with what makes the question worth answering.**
+important predictors, and one important data limitation. 
+Lead with what makes the question worth answering.**
+
+Our overall question is: which predictors in the dataset are the best 
+at predicting final grades in secondary education in Portuguese schools? 
+We would also like to investigate specific relationships, such as that 
+between student’s relationships (familial and friends) and their final 
+grade in math. The intended audience is both educators and students in 
+secondary Portuguese education. The answer matters because student 
+performance is related to their ability to get jobs and contribute 
+to their communities in the future. The response for this question is 
+the student’s final grade, which ranges from 0 to 20 numerically. A 
+few important candidate predictors for this question would be the 
+number of absences, age, quality of family relationships and time 
+spent going out with friends.
 
 ## What the baseline shows
 
@@ -34,13 +48,15 @@ magnitude, scale, and uncertainty. Explain one limitation or unresolved pattern 
 motivates deeper analysis.**
 
 ```{r}
-# Load packages and data, document preparation, and fit the baseline.
-
 # Load packages and read the data with a relative path or reproducible step.
 # Show only a compact check of dimensions and variables.
-# library(tidyverse)
-# data <- read_csv2("student-mat.csv")
-# head(data)
+library(tidyverse)
+data <- read_csv2("student-mat.csv")
+head(data)
+
+# this is a starting model that includes only the numeric variables
+starting_mod <- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel + freetime + goout + Dalc + Walc + health + absences, data = data_set)
+summary(starting_mod)
 ```
 
 ```{r}
