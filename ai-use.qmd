@@ -10,7 +10,7 @@ This page is a work log, not a second report. Short bullets are welcome. It is s
 
 **AI system and date:** Replace.
 
-Proposed AI Extension: We want to use AI to make a small application that will interpret the effect of predictors on the response variable. The app will have options to change the different predictors in the model and see how that affects the response variable (the student's final grade). 
+Proposed AI Extension: We want to use AI to make a small application that will allow the user to pick which variables are included in the model and show the RMSE of the specific model and a plot of the fitted model line through the datapoints. The app will have options to turn on or off the different predictors in the model and see how that affects the model fit on the response variable (the student's final grade). 
 
 **Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.**
 
@@ -38,11 +38,8 @@ Paste the exact prompts that shaped the extension. Include the customized extens
 
 ## Independent verification
 
-1. **Check and result:** Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.
-2. **Check and result:** Replace with a different check and what you learned.
-
-1. **Check and result:** 
-2. **Check and result:** 
+1. **Check and result:** To verify the line of best fit, we will select 5 different models, manually find the coefficients and graph the fitted model line with an online graphing calculator. Then, we will compare this graphed line to the line that our application produced. 
+2. **Check and result:** To verify the RMSEs, we will select 5 different models and manually calculate the RMSEs, then compare them to the RMSEs that our application produced. 
 
 Link or cite verification sources where appropriate. A second AI response does not count as independent verification.
 
