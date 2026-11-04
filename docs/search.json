@@ -11,7 +11,7 @@
     "href": "ai-use.html#starting-point",
     "title": "AI Use and Verification",
     "section": "Starting point",
-    "text": "Starting point\nAI system and date: Replace.\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address."
+    "text": "Starting point\nAI system and date: Replace.\nProposed AI Extension: We want to use AI to make a small application that will allow the user to pick which variables are included in the model and show the RMSE of the specific model and a plot of the fitted model line through the datapoints. The app will have options to turn on or off the different predictors in the model and see how that affects the model fit on the response variable (the student’s final grade).\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.\n\nQuestion:\nVariables:\nCourse-based core model:\nBaseline result:\nLimitation or opportunity:"
   },
   {
     "objectID": "ai-use.html#substantive-prompts",
@@ -32,7 +32,7 @@
     "href": "ai-use.html#independent-verification",
     "title": "AI Use and Verification",
     "section": "Independent verification",
-    "text": "Independent verification\n\nCheck and result: Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.\nCheck and result: Replace with a different check and what you learned.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
+    "text": "Independent verification\n\nCheck and result: To verify the line of best fit, we will select 5 different models, manually find the coefficients and graph the fitted model line with an online graphing calculator. Then, we will compare this graphed line to the line that our application produced.\nCheck and result: To verify the RMSEs, we will select 5 different models and manually calculate the RMSEs, then compare them to the RMSEs that our application produced.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
   },
   {
     "objectID": "ai-use.html#remaining-limitation",
@@ -51,50 +51,50 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Student Performances in Portuguese High school",
+    "title": "Student Performances in Portuguese High School",
     "section": "",
     "text": "Narrative word count: Replace with a number from 750 to 1,000."
   },
   {
     "objectID": "index.html#the-question",
     "href": "index.html#the-question",
-    "title": "Student Performances in Portuguese High school",
+    "title": "Student Performances in Portuguese High School",
     "section": "The question",
-    "text": "The question\nIn one or two short paragraphs, introduce the setting, audience, focused research question, data source, observational unit, response, important predictors, and one important data limitation. Lead with what makes the question worth answering."
+    "text": "The question\nStudent’s grades often act as a filter for further opportunity, whether it be further schooling, scholarships, or job opportunities. By understanding what best predicts academic success teachers, parents, and students can best set themselves up for success both during their education and afterward. Using data collected from two different Portuguese schools, we intend to find out which predictors in the dataset are the best at predicting final grades in secondary education in Portuguese schools.\nWe would also like to investigate specific relationships, such as that between student’s relationships (familial and friends) and their final grade in math. The intended audience is both educators and students in secondary Portuguese education.\nThere are 395 columns and 33 columns seen in the data set, representing 395 individual students from two Portuguese high schools. There are 33 features recorded for each student, recording grades, demographic, school, and social information. This data was collected using school reports and questionnaires. For this project, we will be using final grade in mathematics as the response, which is a numeric variable from 0 to 20. There are many candidate predictors as detailed below. We are specifically interested in the number of absences, age, quality of family relationships and time spent going out with friends. Because this data numerically describes the quality of student’s relationships, it should be able to help answer our question of how those relationships relate to their final grade in math.\nThe data is limited because all of the numeric variables are integers, and many of them are actually categorical."
   },
   {
     "objectID": "index.html#what-the-baseline-shows",
     "href": "index.html#what-the-baseline-shows",
-    "title": "Student Performances in Portuguese High school",
+    "title": "Student Performances in Portuguese High School",
     "section": "What the baseline shows",
-    "text": "What the baseline shows\nDescribe and justify a simple course-based baseline regression model. Interpret the result that best establishes the rest of the story, including its direction, magnitude, scale, and uncertainty. Explain one limitation or unresolved pattern that motivates deeper analysis.\n\n\nShow code\n# Load packages and data, document preparation, and fit the baseline.\n\n\n\n\nShow code\n# Show a primary figure or table only if it helps answer the question."
+    "text": "What the baseline shows\nDescribe and justify a simple course-based baseline regression model. Interpret the result that best establishes the rest of the story, including its direction, magnitude, scale, and uncertainty. Explain one limitation or unresolved pattern that motivates deeper analysis.\n\n\nShow code\n# Load packages and read the data with a relative path or reproducible step.\n# Show only a compact check of dimensions and variables.\nlibrary(tidyverse)\ndata_set &lt;- read_csv2(\"data/student-mat.csv\")\nhead(data_set)\n\n\n# A tibble: 6 × 33\n  school sex     age address famsize Pstatus  Medu  Fedu Mjob     Fjob    reason\n  &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; \n1 GP     F        18 U       GT3     A           4     4 at_home  teacher course\n2 GP     F        17 U       GT3     T           1     1 at_home  other   course\n3 GP     F        15 U       LE3     T           1     1 at_home  other   other \n4 GP     F        15 U       GT3     T           4     2 health   servic… home  \n5 GP     F        16 U       GT3     T           3     3 other    other   home  \n6 GP     M        16 U       LE3     T           4     3 services other   reput…\n# ℹ 22 more variables: guardian &lt;chr&gt;, traveltime &lt;dbl&gt;, studytime &lt;dbl&gt;,\n#   failures &lt;dbl&gt;, schoolsup &lt;chr&gt;, famsup &lt;chr&gt;, paid &lt;chr&gt;,\n#   activities &lt;chr&gt;, nursery &lt;chr&gt;, higher &lt;chr&gt;, internet &lt;chr&gt;,\n#   romantic &lt;chr&gt;, famrel &lt;dbl&gt;, freetime &lt;dbl&gt;, goout &lt;dbl&gt;, Dalc &lt;dbl&gt;,\n#   Walc &lt;dbl&gt;, health &lt;dbl&gt;, absences &lt;dbl&gt;, G1 &lt;dbl&gt;, G2 &lt;dbl&gt;, G3 &lt;dbl&gt;\n\n\nShow code\n# this is a starting model that includes only the numeric variables\nstarting_mod &lt;- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel + freetime + goout + Dalc + Walc + health + absences, data = data_set)\nsummary(starting_mod)\n\n\n\nCall:\nlm(formula = G3 ~ Medu + Fedu + traveltime + studytime + failures + \n    famrel + freetime + goout + Dalc + Walc + health + absences, \n    data = data_set)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-12.423  -2.148   0.554   2.705   8.815 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  9.39949    1.67577   5.609 3.91e-08 ***\nMedu         0.61984    0.25570   2.424  0.01581 *  \nFedu        -0.07743    0.25481  -0.304  0.76140    \ntraveltime  -0.41117    0.31475  -1.306  0.19223    \nstudytime    0.24318    0.26894   0.904  0.36644    \nfailures    -1.91522    0.30691  -6.240 1.16e-09 ***\nfamrel       0.25071    0.24484   1.024  0.30651    \nfreetime     0.35125    0.23118   1.519  0.12950    \ngoout       -0.65197    0.22137  -2.945  0.00343 ** \nDalc        -0.17243    0.31984  -0.539  0.59013    \nWalc         0.35409    0.23867   1.484  0.13874    \nhealth      -0.15504    0.15584  -0.995  0.32042    \nabsences     0.02522    0.02723   0.926  0.35493    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.217 on 382 degrees of freedom\nMultiple R-squared:  0.1786,    Adjusted R-squared:  0.1528 \nF-statistic:  6.92 on 12 and 382 DF,  p-value: 2.266e-11\n\n\n\n\nShow code\n# Show a primary figure or table only if it helps answer the question."
   },
   {
     "objectID": "index.html#going-beyond-the-baseline",
     "href": "index.html#going-beyond-the-baseline",
-    "title": "Student Performances in Portuguese High school",
+    "title": "Student Performances in Portuguese High School",
     "section": "Going beyond the baseline",
     "text": "Going beyond the baseline\nUse two STAT 330 method families. Give each part a descriptive heading that states the question or finding, not an assignment label. Explain why you chose each method, how you checked it, and what it adds to the answer.\n\nReplace with a question or finding\nPresent one method and its most useful evidence.\n\n\nShow code\n# Analysis code for this part.\n\n\n\n\nReplace with another question or finding\nPresent a method from a different family and its most useful evidence. Combine this with the preceding subsection if that creates a clearer story.\n\n\nShow code\n# Analysis code for this part."
   },
   {
     "objectID": "index.html#a-new-direction-with-ai",
     "href": "index.html#a-new-direction-with-ai",
-    "title": "Student Performances in Portuguese High school",
+    "title": "Student Performances in Portuguese High School",
     "section": "A new direction with AI",
     "text": "A new direction with AI\nExplain the need revealed by your preliminary course-based work, the extension you implemented with AI support, and what it contributes to the same research question. Show its substantive result on this page and summarize your independent checks. If the extension is an untaught comparator, evaluate it against the core course-based model. Link to the AI-use record instead of placing a transcript here.\n\n\nShow code\n# Implement the verified extension or show its most useful result.\n\n\nDetails are in the AI-use record."
   },
   {
     "objectID": "index.html#what-this-means",
     "href": "index.html#what-this-means",
-    "title": "Student Performances in Portuguese High school",
+    "title": "Student Performances in Portuguese High School",
     "section": "What this means",
     "text": "What this means\nAnswer the research question directly. Distinguish statistical evidence from practical importance, state the most consequential limitations, and suggest one sensible next step. Avoid causal claims unless the study design supports them."
   },
   {
     "objectID": "index.html#data-and-code",
     "href": "index.html#data-and-code",
-    "title": "Student Performances in Portuguese High school",
+    "title": "Student Performances in Portuguese High School",
     "section": "Data and code",
-    "text": "Data and code\n\nData: Replace with a working source link or citation and any brief acquisition note needed to reproduce the project.\nRepository: Replace with your repository URL.\nAI-use record\nOther sources: Cite package documentation, articles, code, and other sources that materially informed the work."
+    "text": "Data and code\n\nData: Student Performance - UCI Machine Learning Repository. This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license. This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.\nRepository: https://github.com/AthenaNik/STAT-330-Final-Project\nAI-use record\nOther sources: Cite package documentation, articles, code, and other sources that materially informed the work."
   }
 ]
