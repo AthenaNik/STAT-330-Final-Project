@@ -37,8 +37,8 @@ motivates deeper analysis.**
 # Load packages and read the data with a relative path or reproducible step.
 # Show only a compact check of dimensions and variables.
 library(tidyverse)
-data <- read_csv2("student-mat.csv")
-head(data)
+data_set <- read_csv2("data/student-mat.csv")
+head(data_set)
 
 # this is a starting model that includes only the numeric variables
 #starting_mod <- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel #+ freetime + goout + Dalc + Walc + health + absences, data = data_set)
