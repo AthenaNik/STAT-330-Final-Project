@@ -1,13 +1,9 @@
 ---
 title: "Student Performances in Portuguese High school"
-subtitle: "Student's grades often act as a filter for further opportunity, whether it be 
-further schooling, scholarships, or job opportunities. By understanding what best predicts 
-academic success teachers, parents, and students can best set themselves up for success both during 
-their education and afterward."
+subtitle: "Student's grades often act as a filter for further opportunity, whether it be further schooling, scholarships, or job opportunities. By understanding what best predicts academic success teachers, parents, and students can best set themselves up for success both during their education and afterward."
 author: "Athena Nikopoulos, April Baik, Emilia Tolley"
 date: last-modified
-description: "A student project website, built with GitHub pages, which examines the link between different 
-predictors variables and student's final grades in two Portuguese schools."
+description: "A student project website, built with GitHub pages, which examines the link between different predictors variables and student's final grades in two Portuguese schools."
 ---
 
 **Narrative word count:** Replace with a number from 750 to 1,000.
@@ -50,13 +46,13 @@ motivates deeper analysis.**
 ```{r}
 # Load packages and read the data with a relative path or reproducible step.
 # Show only a compact check of dimensions and variables.
-library(tidyverse)
-data <- read_csv2("student-mat.csv")
-head(data)
+# library(tidyverse)
+#data <- read_csv2("student-mat.csv")
+#head(data)
 
 # this is a starting model that includes only the numeric variables
-starting_mod <- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel + freetime + goout + Dalc + Walc + health + absences, data = data_set)
-summary(starting_mod)
+#starting_mod <- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel #+ freetime + goout + Dalc + Walc + health + absences, data = data_set)
+#summary(starting_mod)
 ```
 
 ```{r}
