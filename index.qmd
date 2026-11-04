@@ -1,5 +1,5 @@
 ---
-title: "Student Performances in Portuguese High school"
+title: "Student Performances in Portuguese High School"
 subtitle: "Student's grades often act as a filter for further opportunity, whether it be further schooling, scholarships, or job opportunities. By understanding what best predicts academic success teachers, parents, and students can best set themselves up for success both during their education and afterward."
 author: "Athena Nikopoulos, April Baik, Emilia Tolley"
 date: last-modified
@@ -41,8 +41,8 @@ data_set <- read_csv2("data/student-mat.csv")
 head(data_set)
 
 # this is a starting model that includes only the numeric variables
-#starting_mod <- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel #+ freetime + goout + Dalc + Walc + health + absences, data = data_set)
-#summary(starting_mod)
+starting_mod <- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel + freetime + goout + Dalc + Walc + health + absences, data = data_set)
+summary(starting_mod)
 ```
 
 ```{r}
