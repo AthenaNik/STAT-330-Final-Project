@@ -10,15 +10,28 @@ This page is a work log, not a second report. Short bullets are welcome. It is s
 
 **AI system and date:** Replace.
 
-Proposed AI Extension: We want to use AI to make a small application that will allow the user to pick which variables are included in the model and show the RMSE of the specific model and a plot of the fitted model line through the datapoints. The app will have options to turn on or off the different predictors in the model and see how that affects the model fit on the response variable (the student's final grade). 
+Proposed AI Extension: We want to use AI to make a small application that will allow the user to pick which variables are included in the model and show the RMSE of the specific model and a plot of the fitted model line through the datapoints. The app will have options to turn on or off the different predictors in the model and see how that affects the model fit on the response variable (the student's final grade).
 
 **Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.**
 
-- Question: 
-- Variables: 
-- Course-based core model: 
-- Baseline result:
-- Limitation or opportunity: 
+- Question: Which predictors in the dataset are the best at predicting final math grades in Portuguese high schools?
+- Course-based core model: lm(formula = G3 \~ Medu + Fedu + traveltime + studytime + failures + famrel + freetime + goout + Dalc + Walc + health + absences, data = data_set)
+- Variables (in baseline model):
+  - G3: student’s final math grade
+  - Medu: mother’s education level
+  - Fedu: father’s education level
+  - Traveltime: travel time to school
+  - Studytime: weekly study time
+  - Failures: number of past class failures
+  - Famrel: quality of family relationships
+  - Freetime: free time after school
+  - Goout: going out with friends
+  - Dalc: workday alcohol consumption
+  - Walc: weekend alcohol consumption
+  - Health: current health status
+  - Absences: number of school absences
+- Baseline result: The top three significant numeric coefficients are for number of previous class failures (estimate of -1.91522), how much the student goes out (estimate of -0.65197), and mother’s education (estimate of 0.61984). Our baseline model has an R\^2 of 0.1786 and an adjusted R\^2 0.1528, which shows that our model is not great at predicting.
+- Limitation or opportunity: Because our main question asked which predictors were best at predicting a student’s final math grade, we wanted to have an interactive, visual representation of model selection. Additionally, due to the low predictive power of our original model, we wanted our user to be able to “choose their own model,” and see how their included predictors affected RMSE and other metrics. This limitation of our baseline model led us to discover the opportunity for this interactive AI application.
 
 ## Substantive prompts
 
@@ -38,8 +51,8 @@ Paste the exact prompts that shaped the extension. Include the customized extens
 
 ## Independent verification
 
-1. **Check and result:** To verify the line of best fit, we will select 5 different models, manually find the coefficients and graph the fitted model line with an online graphing calculator. Then, we will compare this graphed line to the line that our application produced. 
-2. **Check and result:** To verify the RMSEs, we will select 5 different models and manually calculate the RMSEs, then compare them to the RMSEs that our application produced. 
+1.  **Check and result:** To verify the line of best fit, we will select 5 different models, manually find the coefficients and graph the fitted model line with an online graphing calculator. Then, we will compare this graphed line to the line that our application produced.
+2.  **Check and result:** To verify the RMSEs, we will select 5 different models and manually calculate the RMSEs, then compare them to the RMSEs that our application produced.
 
 Link or cite verification sources where appropriate. A second AI response does not count as independent verification.
 

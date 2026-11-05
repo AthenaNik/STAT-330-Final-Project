@@ -38,6 +38,7 @@ One very obvious limitation is that the numerical data is measured on a scale of
 library(tidyverse)
 library(car)
 library(bestglm)
+library(dplyr)
 data_set <- read_csv2("data/student-mat.csv")
 head(data_set)
 
@@ -84,6 +85,19 @@ mod_influence |> slice_max(abs(std_resid), n = 3) |> select(row, std_resid)
 mod_influence |> slice_max(cooks_d, n = 3) |> select(row, cooks_d)
 
 # Best Subsets
+bestglm_data <- dat_set |>
+  mutate(across(where(is.character), as.factor)) |>
+  relocate(G3, .after = last_col()) |>
+  as.data.frame()
+
+best_subsets_bic <- bestglm(
+  bestglm_data,
+  IC = "BIC",
+  method = "exhaustive",
+  TopModels = 5
+)
+
+best_subsets_bic$BestModels
 ```
 
 
