@@ -17,37 +17,75 @@ and all bold prompts before submitting.
 :::
 
 ## The question
-Student's grades often act as a filter for further opportunity, whether it be further schooling, scholarships, or job opportunities. By understanding what best predicts academic success teachers, parents, and students can best set themselves up for success both during their education and afterward. Using data collected from two different Portuguese schools, we intend to find out which predictors in the dataset are the best at predicting final grades in secondary education in Portuguese schools.  
-We would also like to investigate specific relationships, such as that between student’s relationships (familial and friends) and their final grade in math. The intended audience is both educators and students in secondary Portuguese education. 
+Student's grades often act as a filter for further opportunity, whether it be further schooling, scholarships, or job opportunities. By understanding what best predicts academic success teachers, parents, and students can best set themselves up for success both during their education and afterward. Using data collected from two different Portuguese schools, we intend to find out which predictors in the dataset are the best at predicting final grades in secondary education in Portuguese schools. We would also like to investigate specific relationships, such as that between student’s relationships (familial and friends) and their final grade in math. The intended audience is both educators and students in secondary Portuguese education. 
 
 We found our data on the UCI Machine Learning Library. There are 395 columns and 33 columns seen in the data set, representing 395 individual students from two Portuguese high schools. There are 33 features recorded for each student, recording grades, demographic, school, and social information. This data was collected using school reports and questionnaires. For this project, we will be using final grade in mathematics as the response, which is a numeric variable from 0 to 20. There are many candidate predictors as detailed below. We are specifically interested in the number of absences, age, quality of family relationships and time spent going out with friends. Because this data numerically describes the quality of student’s relationships, it should be able to help answer our question of how those relationships relate to their final grade in math. The data is limited because all of the numeric variables are integers, and many of them are actually categorical. 
 
 ## What the baseline shows
 
-**Describe and justify a simple course-based baseline regression model. 
-Interpret the result that best establishes the rest of the story, including its direction, 
-magnitude, scale, and uncertainty. Explain one limitation or unresolved pattern that 
-motivates deeper analysis.**
+Our initial model only uses the numeric variables within the dataset. We found that it did not do
+a good job of predicting final grades in math for Portuguese students. In fact, the predictors only 
+accounted for about 15% of the response. The p-value was significant at 2.266e-11, which suggests that some
+of the predictors should be kept. This suggests that we need to identify different predictors, which we could do through best subsets.
+
+One significant coefficient is how much time the student spends going out a week- which was measured in the survey on a scale of 1 to 5. According to this model, holding all other included predictors constant, if the amount of time spent going out with friends increases by 1 objective unit (on the survey scale), we estimate that the student's final grade would decrease by 0.652 points (on a scale from 1 to 20) on average.
+
+One very obvious limitation is that the numerical data is measured on a scale of 1 to 5, especially here in the case of time spent going out with friends. Because of the way this data was collected, this makes it harder for our regression model to get into the specifics and thereby our study is bound to be less specifically interpretable.
 
 ```{r}
 # Load packages and read the data with a relative path or reproducible step.
 # Show only a compact check of dimensions and variables.
 library(tidyverse)
+library(car)
+library(bestglm)
 data_set <- read_csv2("data/student-mat.csv")
 head(data_set)
 
-# this is a starting model that includes only the numeric variables
-starting_mod <- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel + freetime + goout + Dalc + Walc + health + absences, data = data_set)
+# Changes the variables to doubles
+dat_set <- data_set|>
+    select_if(is.double)
+
+# This is a starting model that includes only the numeric variables
+starting_mod <- lm(G3 ~ Medu + Fedu + traveltime + studytime + failures + famrel + freetime + goout + Dalc + Walc + health + absences, data = dat_set)
 summary(starting_mod)
 ```
 
 ```{r}
-# Show a primary figure or table only if it helps answer the question.
+# Corrplot
+corrplot::corrplot(cor(dat_set), method = "circle", type = "upper", diag = FALSE, title = "Correlation Plot for Student Grades and Explanatory Variables",
+mar=c(0,0,5,0))
 ```
 
 ## Going beyond the baseline
 
 **Use two STAT 330 method families. Give each part a descriptive heading that states the question or finding, not an assignment label. Explain why you chose each method, how you checked it, and what it adds to the answer.**
+
+### Method 1: 
+Best Subsets to select the Best Predictors
+
+```{r}
+# vif for the full model
+vif(starting_mod) |> round(2)
+
+# maximum VIF, mean VIF
+c(max_vif = max(vif(starting_mod)), mean_vif = mean(vif(starting_mod)))
+
+# Influence and Leverage
+mod_influence <- dat_set |>
+  mutate(
+    row = row_number(),
+    leverage = hatvalues(starting_mod),
+    std_resid = rstandard(starting_mod),
+    cooks_d = cooks.distance(starting_mod)
+  )
+
+mod_influence |> slice_max(leverage, n = 3) |> select(row, leverage)
+mod_influence |> slice_max(abs(std_resid), n = 3) |> select(row, std_resid)
+mod_influence |> slice_max(cooks_d, n = 3) |> select(row, cooks_d)
+
+# Best Subsets
+```
+
 
 ### Replace with a question or finding
 
